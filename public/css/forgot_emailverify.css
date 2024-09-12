@@ -1,0 +1,129 @@
+/* Reset some default browser styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    background-color: #f0f0f0; /* Light background color for contrast */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    display: flex;
+    max-width: 1200px; /* Adjust as needed */
+    width: 90%; /* Ensures responsiveness */
+    height: 80vh; /* Adjust height as needed */
+    border-radius: 12px; /* More pronounced rounded corners */
+    overflow: hidden; /* Ensure content doesn't overflow */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    background: #fff; /* Background color to prevent overlapping issues */
+    transition: box-shadow 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.main-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
+    transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+.image-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f4f4; /* Light background for the image side */
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.form-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; /* White background for the form side */
+    padding: 30px; /* Increased padding for better spacing */
+    border-left: 1px solid #ddd; /* Separator line */
+}
+
+.form-container {
+    width: 100%;
+    max-width: 450px; /* Adjusted for better fit */
+    background: #f9f9f9; /* Slightly off-white background for form container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 26px; /* Slightly larger heading */
+    color: #333;
+    text-align: center; /* Center-align heading */
+}
+
+p {
+    margin-bottom: 20px;
+    color: #555;
+    text-align: center; /* Center-align paragraph */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="email"] {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px; /* Slightly larger border radius */
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px; /* Rounded corners for the button */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.response-message {
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: center; /* Center-align response messages */
+}
+
+.response-message.success {
+    color: #28a745; /* Green for success */
+}
+
+.response-message.error {
+    color: #dc3545; /* Red for error */
+}

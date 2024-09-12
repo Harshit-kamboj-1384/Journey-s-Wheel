@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/cartpage.css">
+    <script src="https://kit.fontawesome.com/0a57e62863.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="bs1">
+        <div class="one">
+            <h1>Journeys <span>Wheel</span></h1>
+        </div>
+        <div class="two">
+            <ul class="list">
+                <li><a href="/homeuser">Home</a></li>
+                <li><a href="/booking">Booking</a></li>
+                <li><a href="/carsuser">Cars</a></li>
+                <li><a href="/cart">Cart</a></li>
+                <li><a href="/profile"><i class="fa-solid fa-user user-icon" id="icon"></i> <%= userr.name %></a></li>
+                <li><a href="/logout" id="logoutButton">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <div class="cart-container">
+            <!-- <h2>Your Cart</h2> -->
+            
+            <% cars.forEach(car => { %>
+                <div class="product-row">
+                    <div class="product-image">
+                        <img src="/images/<%= car.img %>" alt="Product Image">
+                    </div>
+                    <div class="product-info">
+                        <p>Name : <%= car.name %></p>
+                        <p>Price: <%= car.price %></p>
+                        <p>Description: <%= car.description %></p>
+                        <div class="innerdiv">
+                            <a href="/book/<%= car.id %>"><button class='remove-item'>Book now</button></a> 
+                            <a id="remove-data" class='remove-item' data-car-img="<%= car.img %>">Remove Item</a>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+            
+        </div>
+    </main>
+  
+</body>
+
+<script>
+    document.getElementById('remove-data').addEventListener('click', function(event) {
+
+        // Get car ID from data attribute
+       
+        const carImg = this.getAttribute('data-car-img');
+        if (!carImg) {
+            alert('No car image data found.');
+            return;
+       }
+        // Send a POST request to the server
+        fetch('/removecart', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ carImg: carImg })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response data from the server
+            if (data.success) {
+                window.location.reload();
+                alert('Car deleted from cart successfully!');
+            } else {
+                alert('Failed to delete car from cart.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred.');
+        });
+    });
+</script>
+
+</html>
+
+

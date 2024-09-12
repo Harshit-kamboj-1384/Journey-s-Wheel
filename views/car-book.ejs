@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Car</title>
+    <link rel="stylesheet" href="/css/car-book.css">
+</head>
+<body>
+    <div class="bs1">
+        <div class="one">
+            <h1>Journeys <span>Wheel</span></h1>
+        </div>
+        <div class="two">
+            <ul class="list">
+                <li><a href="/homeuser">Home</a></li>
+                <li><a href="#home">Booking</a></li>
+                <li><a href="/carsuser">Cars</a></li>
+                <li><a href="/cart">Cart</a></li>
+                <li><a href="/profile"><i class="fa-solid fa-user user-icon" id="icon"></i> <%= userr.name %></a></li>
+                <li><a href="/logout" id="logoutButton">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="image-section">
+            <img src="/images/<%= car.img %>" alt="Car Rental" />
+        </div>
+
+        <div class="form-section">
+            <h2>Book Your Car</h2>
+            <form id="booking-form" action="/payment" method="post">
+                <div class="form-group">
+                    <label for="pickup-date">Pick-up Date:</label>
+                    <input type="date" id="pickup-date" name="pickupDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="return-date">Return Date:</label>
+                    <input type="date" id="return-date" name="returnDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="pricing">
+                    <p><strong>Total Cost:</strong> $<span id="total-cost" name="cost" data-car-price="<%= car.price %>">0</span></p>
+                    <input type="hidden" id="hidden-total-cost" name="totalCost">
+                    <input type="hidden" name="carid" value="<%= car.id %>">
+                </div>
+
+                <a><button type="submit">Book Now</button></a>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Car Rental Service</p>
+    </footer>
+
+    <script>
+        // Get the daily price from the HTML element
+        const dailyPrice = parseFloat(document.getElementById('total-cost').getAttribute('data-car-price'));
+
+        function calculateTotalCost(pickupDate, returnDate, dailyPrice) {
+            const diffTime = new Date(returnDate) - new Date(pickupDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays > 0 ? diffDays * dailyPrice : 0; // Ensure positive days
+        }
+
+        function updateTotalCost() {
+            const pickupDate = document.getElementById('pickup-date').value;
+            const returnDate = document.getElementById('return-date').value;
+
+            if (pickupDate && returnDate) {
+                const totalCost = calculateTotalCost(pickupDate, returnDate, dailyPrice);
+                document.getElementById('total-cost').innerText = totalCost.toFixed(2);
+                document.getElementById('hidden-total-cost').value = totalCost.toFixed(2);
+            }
+        }
+
+        document.getElementById('pickup-date').addEventListener('change', updateTotalCost);
+        document.getElementById('return-date').addEventListener('change', updateTotalCost);
+    </script>
+</body>
+</html>

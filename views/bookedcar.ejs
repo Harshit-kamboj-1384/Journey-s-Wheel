@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Bookings</title>
+    <link rel="stylesheet" href="/css/bookedcar.css">
+    <style>
+        /* Include the provided CSS and additional styles here */
+    </style>
+</head>
+<body>
+    <div class="bs1">
+        <div class="one">
+            <h1>Journeys <span>Wheel</span></h1>
+        </div>
+        <div class="two">
+            <ul class="list">
+                <li><a href="/homeuser">Home</a></li>
+                <li><a href="/booking">Booking</a></li>
+                <li><a href="/carsuser">Cars</a></li>
+                <li><a href="/cart">Cart</a></li>
+                <li><a href="/profile"><i class="fa-solid fa-user user-icon" id="icon"></i> <%= userr.name %></a></li>
+                <li><a href="/logout" id="logoutButton">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <main>
+        <div class="cart-container">
+            <h2>Your Booking</h2>
+            <div class="product-row-container">
+                <% cars.forEach(car => { %>
+                <div class="product-row">
+                    <div class="product-image">
+                        <img src="/images/<%= car.img %>" alt="Booked Car">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name"><%= car.name %></h3>
+                        <p class="item-price">$<%= car.price %></p>
+                        <p class="item-description"><%= car.description %></p>
+                        <p class="item-pickup-date"><strong>Pickup Date:</strong> <%= car.pickup_date %></p>
+                        <p class="item-return-date"><strong>Return Date:</strong> <%= car.return_date %></p><br>
+                        <a class="remove-item" data-car-img="<%= car.img %>">Cancel Booking</a>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+            <div class="confirmation-info">
+                <p>Thank you for booking with us! Your booking is confirmed and we look forward to serving you.</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Car Rental Service. All rights reserved.</p>
+    </footer>
+</body>
+<script>
+    // Event delegation: Attach event listener to the parent container
+    document.querySelector('.product-row-container').addEventListener('click', function(event) {
+        if (event.target.classList.contains('remove-item')) {
+            event.preventDefault();
+            
+            // Get car image from data attribute
+            const carImg = event.target.getAttribute('data-car-img');
+            if (!carImg) {
+                alert('No car image data found.');
+                return;
+            }
+            
+            // Send a POST request to the server
+            fetch('/cancelbooking', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ carImg: carImg })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response data from the server
+                if (data.success) {
+                    window.location.reload();
+                } else {
+                    alert('Failed to cancel your booking.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred.');
+            });
+        }
+    });
+</script>
+
+</html>

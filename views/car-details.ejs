@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= car.name %> Details</title>
+    <link rel="stylesheet" href="/css/car-details.css">
+    <script src="https://kit.fontawesome.com/0a57e62863.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="bs1">
+        <div class="one">
+            <h1>Journeys <span>Wheel</span></h1>
+        </div>
+        <div class="two">
+            <ul class="list">
+                <li><a href="/home">Home</a></li>
+                <li><a href="#home">Booking</a></li>
+                <li><a href="/cars">Cars</a></li>
+                <li><a href="/cart">Cart</a></li>
+                <li><a href="/profile"><i class="fa-solid fa-user user-icon" id="icon"></i> <%= userr.name %></a></li>
+                <li><a href="/logout" id="logoutButton">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="car-details">
+        <div class="car-info">
+            <div class="carimg">
+                <img src="/images/<%= car.img %>" ">
+            </div>
+            <div class="car-text">
+                <h3><%= car.name %></h3>
+                <p><strong>Rent per day:</strong> $<%= car.price %></p>
+                <p><strong>Description:</strong> <%= car.description %></p>
+                <a href="/book/<%= car.id %>" class="book-now">Book Now</a>
+                <a id="add-to-cart" class="book-now" data-car-id="<%= car.id %>" >Add to cart</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Car Rental Service. All rights reserved.</p>
+    </footer>
+    
+</body>
+
+<script>
+    document.getElementById('add-to-cart').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default anchor behavior
+
+        // Get car ID from data attribute
+        const carId = this.getAttribute('data-car-id');
+
+        // Send a POST request to the server
+        fetch('/cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ carId: carId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response data from the server
+            if (data.success) {
+                alert('Car added to cart successfully!');
+            } else {
+                alert('This car is already in cart');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred.');
+        });
+    });
+</script>
+
+</html>

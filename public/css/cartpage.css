@@ -1,0 +1,136 @@
+.bs1{
+    box-shadow: rgba(154, 207, 230, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    height: 50px;
+    width: 100%;
+    background-color: #1F1F1F;
+    display: flex;
+    padding-bottom: 1%;
+}
+
+.one{
+    width: 28%;
+    color: white;
+    opacity: 0.9;
+    padding-left: 6px;
+}
+
+.two{
+    width: 60%;
+}
+
+.list{
+    list-style-type: none;
+    display: flex;
+    padding-left: 10%;
+}
+
+li{
+    padding:20px 40px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    opacity: 0.9;
+}
+
+.list a:hover{
+    color: #20c997;
+}
+
+.cart-container {
+    background: #fff;
+    border-radius: 8px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1000px;
+}
+
+.cart-container h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+}
+.cart-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cart-total {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+button {
+    background: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #218838;
+}
+
+.product-row {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.remove-item , input{
+    margin:10px;
+    width:135px;
+    text-decoration: none;
+    font-family:'Times New Roman', Times, serif;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding:10px 10px;
+    background-color:green;
+    color:white;
+    font-size:20px;
+}
+
+a:hover,input:hover{
+    transform: scale(1.1);
+}
+
+.innerdiv{
+    display: flex;
+    margin:0px;
+}
+
+input::placeholder{
+    color:white;
+}

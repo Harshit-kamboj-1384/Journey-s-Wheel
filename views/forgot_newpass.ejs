@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification for Password Change</title>
+    <link rel="stylesheet" href="/css/forgot_newpass.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="image-side">
+            <img src="/images/forgot_emailverify.jpg" alt="Background Photo" class="image">
+        </div>
+        <div class="form-side">
+            <div class="form-container">
+                <h1>Create a new password</h1>
+                <p>Create a password with at least 6 letters and numbers. You'll need this pasword to lig in to your account.</p>
+                <form id="password-reset-form" action="/resetpass" method="post">
+                    <label for="newpass1">Create password:</label>
+                    <input type="password" id="newpass1" name="pass1" required><br><br>
+                    <label for="newpass2">confirm password:</label>
+                    <input type="password" id="newpass2" name="pass2" required>
+                    <button type="submit">continue</button>
+                </form>
+                <div id="response-message" class="response-message"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

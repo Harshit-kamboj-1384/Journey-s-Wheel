@@ -1,0 +1,69 @@
+body{
+    background-color: black;
+    display: flex;
+}
+
+h2{
+    color: white;
+    opacity: 0.9;
+}
+
+.carimg{
+    width: 70%;
+    height: 700px;
+}
+
+.car{
+    width: 80%;
+    height: 80%;
+    padding: 30px 50px;
+}
+
+.otp_logo{
+    position: absolute;
+    padding-left: 23%;
+    color: white;
+    top: 51%;
+    opacity: 0.5;
+    font-size: 30px;
+}
+
+.otp_box{
+    border: 2px solid;
+    width:25%;
+    height: 200px;
+    padding-left: 20px;
+    background-color: #1F1F1F;
+    /* margin-left: 20%; */
+    margin-top: 10%;
+}
+
+#box{
+    width: 92%;
+    height: 20px;
+    background-color: #333333;
+    border: none;
+    color: white;
+    opacity: 0.6;
+}
+
+.btn{
+    color: orangered;
+    background-color: white;
+    width: 80px;
+    height: 30px;
+}
+
+.btn:hover{
+    color: white;
+    background-color: rgb(255, 55, 0);
+}
+
+.anker_tag{
+    color: rgb(241, 241, 246);
+    text-decoration: none;
+    opacity: 0.9;
+}
+a:hover{
+    color: rgb(108, 108, 227);
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/cars_user.css">
+    <script src="https://kit.fontawesome.com/0a57e62863.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="bs1">
+        <div class="one">
+            <h1>Journeys <span>Wheel</span></h1>
+        </div>
+        <div class="two">
+            <ul class="list">
+                <li><a href="/homeuser">Home</a></li>
+                <li><a href="#home">Booking</a></li>
+                <li><a href="/carsuser">Cars</a></li>
+                <li><a href="/cart">Cart</a></li>
+                <% if (userr) { %>
+                    <li><a><%= userr.name %></a></li>
+                    <li><a href="/logout" id="logoutButton">Logout</a></li>
+                <% } else { %>
+                    <li><a href="/registration" class="sign"> Sign Up</a></li>
+                    <li><a href="/login">Login</a></li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+    <div class="backimage">
+ 
+    </div>
+
+   <div class="first">
+    <h2>Find Your Perfect Car</h2>
+    <div class="car-gallery">
+        <% cars.forEach(car => { %>
+            <div class="car-card">
+                <img src="/images/<%= car.img %>" class="carimg">
+                <div class="carcont">
+                    <span class="heading"><b><%= car.name %></b></span><br><br>
+                    <span class="price1"><b>price/-</b><span class="price2">$<%= car.price %></span>/Rent per day</span><br><br>
+                    <a href="/book/<%= car.id %>"><button class="btn1">Book Now</button></a>
+                    <a href="/cars/<%= car.id %>"><button class="btn2">Details</button></a>                
+                </div>
+            </div>
+        <% }) %>
+    </div>
+   </div>
+  
+</body>
+<script>
+    document.getElementById('logoutButton').addEventListener('click', function() {
+   // Clear the token from local storage
+   localStorage.removeItem('Token'); // Ensure this matches the key used for storing the token
+   window.location.href = '/login';
+ });
+ 
+   </script>
+</html>
+
+

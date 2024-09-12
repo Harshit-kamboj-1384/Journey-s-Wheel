@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Car</title>
+    <link rel="stylesheet" href="/css/updatecarpage.css">
+</head>
+<body>
+    <div class="add-car-box">
+        <h2>Update Car</h2>
+        <form id="addCarForm" action="/updatecar/<%=id %>" method="post" enctype="multipart/form-data">
+            <div>
+                <label for="carName">Car Name:</label><br>
+                <input type="text" id="carName" name="carName" required><br><br>
+            </div>
+            <div>
+                <label for="price">Price:</label><br>
+                <input type="text" id="price" name="price" step="0.01" required><br><br>
+            </div>
+            <div>
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description" rows="10" required></textarea><br><br>
+            </div>
+            <div>
+                <label for="image">Car Image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+            </div>
+            <button type="submit">Add Car</button>
+        </form>
+    </div>
+</body>
+</html>
+

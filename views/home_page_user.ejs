@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Service</title>
+    <link rel="stylesheet" href="/css/home_page_user.css">
+    <script src="https://kit.fontawesome.com/0a57e62863.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="bs1">
+            <div class="one">
+                <h1><b>Journeys <span class="headspan">Wheel</span></b> </h1>
+            </div>
+            <div class="two">
+                <ul class="list">
+                    <li><a href="/homeuser">Home</a></li>
+                    <li><a href="/booking">Booking</a></li>
+                    <li><a href="/carsuser">Cars</a></li>
+                    <li><a href="/cart">Cart</a></li>
+
+                    <% if (userr) { %>
+                        <li><a href="/profile"><%= userr.name %></a></li>
+                        <li><a href="/logout" id="logoutButton">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
+                    <% } else { %>
+                        <li><a href="/registration"> Sign Up</a></li>
+                        <li><a href="/login">Login</a></li>
+                    <% } %>
+
+                </ul>
+            </div>
+        </div>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Fast and Easy way To Rent A car</h1>
+                <p>A Small river names Duden flows by their Place and supplies it with the necessary <br> regelialia. It is a paradisematic country, in which rosted posts</p>
+                <a href="/carsuser" class="cta-button">Book your perfect car</a>
+            </div>
+        </section>
+    </header><br><br><br>
+    
+    <div class="container">
+        <div class="container-content">
+            <span>WHAT WE OFFER</span>
+            <h1>Featured Vehicles</h1>
+        </div>
+    </div>
+
+    <div class="car-gallery">
+        <% cars.forEach(car => { %>
+            <div class="car-card">
+                <img src="/images/<%= car.img %>" class="carimg">
+                <div class="carcont">
+                    <span class="heading"><b><%= car.name %></b></span><br><br>
+                    <span class="price1"><b>price/-</b><span class="price2">$<%= car.price %></span>/Rent per day</span><br><br>
+                    <a href="/books/<%= car.id %>"><button class="btn1">Book Now</button></a>
+                    <a href="/home/<%= car.id %>"><button class="btn2">Details</button></a>                
+                </div>
+            </div>
+        <% }) %>
+    </div><br><br><br>
+    
+    <!-- services -->
+    <div class="shadow">
+        <div class="container">
+            <div class="container-content">
+                <span>SERVICES</span>
+                <h1>Our Latest Services</h1>
+            </div>
+        </div><br>
+        <div class="service-content">
+            <div class="sc1">
+                <i class="fa-solid fa-car" id="icons"></i>
+                <h3>Wedding Ceremony</h3>
+                <p>A small river named Duden<br>flows by their Place and<br> supplies it with the necessary regelialia. It is a paradisematic country, in which rosted posts</p>
+            </div>
+            <div class="sc1">
+                <i class="fa-solid fa-car-on" id="icons"></i>
+                <h3>City Transfer</h3>
+                <p>A small river named Duden<br>flows by their Place and<br> supplies it with the necessary regelialia. It is a paradisematic country, in which rosted posts</p>      
+            </div>
+            <div class="sc1">
+                <i class="fa-solid fa-car-tunnel" id="icons"></i>
+                <h3>Airport Transfer</h3>
+                <p>A small river named Duden<br>flows by their Place and<br> supplies it with the necessary regelialia. It is a paradisematic country, in which rosted posts</p>
+            </div>
+            <div class="sc1">
+                <i class="fa-solid fa-car" id="icons"></i>
+                <h3>Whole City Tour</h3>
+                <p>A small river named Duden<br>flows by their Place and<br> supplies it with the necessary regelialia. It is a paradisematic country, in which rosted posts</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Car Rental Service. All rights reserved.</p>
+            <p>1234 Car Street, Cityville, CA 12345</p>
+            <p><a href="mailto:info@carrental.com">info@carrental.com</a> | (123) 456-7890</p>
+        </div>
+    </footer>
+</body>
+<script>
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        // Clear the token from local storage
+        localStorage.removeItem('Token'); // Ensure this matches the key used for storing the token
+        window.location.href = '/login';
+    });
+</script>
+</html>

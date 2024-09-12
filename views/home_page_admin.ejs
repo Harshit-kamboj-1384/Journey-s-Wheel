@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Service</title>
+    <link rel="stylesheet" href="/css/home_page_admin.css">
+    <script src="https://kit.fontawesome.com/0a57e62863.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="bs1">
+            <div class="one">
+                <h1><b>Journeys <span class="headspan">Wheel</span></b> </h1>
+            </div>
+            <div class="two">
+                <ul class="list">
+                    <li><a href="/homeadmin">Home</a></li>
+                    <li><a href="/carsadmin">Cars</a></li>
+                    <li><a href="/profile"><i class="fa-solid fa-user user-icon" id="icon"></i> <%= userr.name %></a></li>
+                    <li><a href="/logout" id="logoutButton">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
+                    <li><a href="/add-car">Add New Car</a></li>
+                </ul>
+            </div>
+        </div>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Fast and Easy way To Rent A car</h1>
+                <p>A Small river names Duden flows by their Place and supplies it with the necessary <br> regelialia.it is a paradisematic country, in which rosted posts</p>
+                <a href="/carsadmin" class="cta-button">Book your prefect car</a>
+            </div>
+        </section>
+    </header><br><br><br>
+    
+    <div class="container">
+        <div class="container-content">
+            <span>WHAT WE OFFER</span>
+            <h1>Feeatured Vehicles</h1>
+        </div>
+    </div>
+
+
+    <div class="car-gallery">
+
+        <% cars.forEach(car => { %>
+            <div class="car-card">
+                <img src="/images/<%= car.img %>" class="carimg">
+                <div class="carcont">
+                    <span class="heading"><b><%= car.name %></b></span><br><br>
+                    <span class="price1"><b>price/-</b><span class="price2"><%= car.price %></span>/Rent per hour</span><br><br>
+                    <a href="/updatecar/<%= car.id %>"><button class="btn1">Update</button></a>
+                        <a href="#" class="remove-data" data-car-img="<%= car.img %>" onclick="removeCar(event, '<%= car.img %>')"><button class="btn2">Delete</button></a>                  
+                </div>
+            </div>
+        <% }) %>
+
+    </div><br><br><br>
+    
+    <!-- services -->
+
+    <div class="shadow">
+        <div class="container">
+            <div class="container-content">
+                <span>SERVICES</span>
+                <h1>Our Latest Services</h1>
+            </div>
+        </div><br>
+        <div class="service-content">
+            <div class="sc1">
+                <i class="fa-solid fa-car" id="icons"></i>
+                <h3>Wedding Ceremoney</h3>
+                <p>A small river named Duden<br>flows by their Place and<br> supplies it with the necessary  regelialia.it is a paradisematic country, in which rosted posts</p>
+            </div>
+            <div class="sc1">
+                <i class="fa-solid fa-car-on" id="icons"></i>
+                <h3>City Transfer</h3>
+                <p>A small river named Duden<br>flows by their Place and<br> supplies it with the necessary  regelialia.it is a paradisematic country, in which rosted posts</p>      
+            </div>
+            <div class="sc1">
+                <i class="fa-solid fa-car-tunnel" id="icons"></i>
+                <h3>Airport Transfer</h3>
+                <p>A small river named Duden<br>flows by their Place and<br> supplies it with the necessary  regelialia.it is a paradisematic country, in which rosted posts</p>
+            </div>
+            <div class="sc1">
+                <i class="fa-solid fa-car" id="icons"></i>
+                <h3>Whole City Tour</h3>
+                <p>A small river named Duden<br>flows by their Place and<br> supplies it with the necessary  regelialia.it is a paradisematic country, in which rosted posts</p>
+            </div>
+        </div>
+    
+    </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Car Rental Service. All rights reserved.</p>
+            <p>1234 Car Street, Cityville, CA 12345</p>
+            <p><a href="mailto:info@carrental.com">info@carrental.com</a> | (123) 456-7890</span>
+        </div>
+    </footer>
+</body>
+<script>
+   document.getElementById('logoutButton').addEventListener('click', function() {
+        // Clear the token from local storage
+        localStorage.removeItem('Token'); // Ensure this matches the key used for storing the token
+        window.location.href = '/login';
+    });
+
+    function removeCar(event, carImg) {
+        event.preventDefault(); // Prevent default anchor behavior
+        
+        // Send a POST request to the server
+        fetch('/removecar', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ carImg: carImg })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response data from the server
+            if (data.success) {
+                alert('Car deleted from car page successfully!');
+                window.location.reload();
+            } else {
+                alert('Failed to delete car from car page.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred.');
+        });
+    }
+  </script>
+</html>

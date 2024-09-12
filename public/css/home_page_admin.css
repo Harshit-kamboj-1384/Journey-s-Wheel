@@ -1,0 +1,252 @@
+header{
+    background: url('/images/home 3.jpg') no-repeat center center/cover;
+    height: 700px;
+    width: 100%;
+    /* opacity: 0.9; */
+}
+
+.bs1{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    padding-bottom: 1%;
+}
+
+.one{
+    width: 28%;
+    color: #fff;
+    padding-left: 6px;
+    font-size: 40px;
+}
+
+.two{
+    width: 64%;
+}
+
+h1{
+    font-size: 30px;
+    font-weight: bold;
+    padding-left: 20%;
+}
+.headspan{
+    color: #1effbb;
+}
+.first{
+    margin-top: -1.5%;
+}
+
+.list{
+    list-style-type: none;
+    display: flex;
+    padding-left: 12%;
+    margin-left: 150px;
+}
+li{
+    padding:20px 35px;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+a:hover{
+    color: #20c997;
+}
+
+/* Styling for user icon */
+.user-icon {
+    display: inline-block;
+    width: 25px; /* Adjust the size as needed */
+    height: 25px; /* Adjust the size as needed */
+    border-radius: 50%; /* Makes the icon round */
+    background-color: #f0f0f0; /* Background color for the circle */
+    text-align: center; /* Center the icon inside the circle */
+    line-height: 20px; /* Align icon vertically */
+    font-size: 20px; /* Adjust the icon size */
+    color: #333; /* Icon color */
+    border: 2px solid #ddd; /* Optional border around the circle */
+}
+
+/* Optional hover effect */
+.user-icon:hover {
+    background-color: #e0e0e0; /* Change background on hover */
+    color: #000; /* Change icon color on hover */
+}
+
+
+/* Hero Section */
+.hero {
+    color: #fff;
+    text-align: center;
+    padding: 5rem 0;
+}
+
+.hero-content {
+    padding-top: 120px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    padding-right: 290px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.cta-button {
+    background: #e8491d;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.cta-button:hover {
+    background: #d7381f;
+}
+
+/* Main Sections */
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.container-content span{
+    color: #1089ff;
+    padding-left: 42%;
+}
+
+.container-content h1{
+    padding-left: 430px;
+    font-size: 2.5rem;
+    margin-top: -2px;
+}
+
+.shadow{
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.car-gallery{
+    display: grid;
+    margin-left: 6%;
+    margin-right: 6%;
+    margin-top: 4%;
+    grid-template-columns: repeat(3, 1fr); /* 4 columns */
+    gap: 16px; 
+    margin-bottom: 20px;
+}
+.car-card{
+    margin-left: 2%;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    width: 80%;
+    height: 315px;
+    padding-left: 1.7%;
+    padding-top: 5%;
+}
+.carimg{
+    padding-left: 2.6%;
+    height: 200px;
+    width:95%;
+    transform: translateY(-50px);
+}
+
+.btn1{
+    width: 40%;
+    height: 35px;
+    margin-left: 0;
+    background-color: #1089ff ;
+    color: white;
+    border: 1px solid;
+    font-size: 1.0rem;
+}
+
+.btn1:hover {
+    background-color: #0660b9(25, 182, 255);
+}
+
+.btn2{
+    width: 40%;
+    height: 35px;
+    margin-left: 35px;
+    background-color: #20c997 ;
+    color: white;
+    border: 1px solid;
+    font-size: 1.0rem;
+}
+
+
+.carcont{
+    margin-top: 10px;
+    padding-left: 3%;
+    transform: translateY(-50px);
+}
+
+.heading{
+    font-size: 1.5rem;
+}
+
+.price1{
+    font-size: 1.2rem;
+}
+
+.price2{
+    color: #1089ff;
+    padding-left: 155px;
+}
+
+.service-content{
+    display: flex;
+    height: 300px;
+}
+
+.sc1{
+    width: 236px;
+    height: 250px;
+    /* background-color: #e16f6f; */
+    margin-left: 6.5%;
+}
+.sc1 h3{
+    text-align: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+.sc1 p{
+    color: black;
+    padding-left: 20px;
+    font-size: 1.1rem;
+}
+#icons{
+    font-size: 40px; /* Icon size */
+    background-color: #007bff; /* Background color of the icon */
+    color: white; /* Icon color */
+    border-radius: 50%; /* Circular border radius */
+    padding: 1rem; /* Space around the icon */
+    border: 3px solid #0056b3;
+    margin-left: 70px;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 15px;
+    height: 100px;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

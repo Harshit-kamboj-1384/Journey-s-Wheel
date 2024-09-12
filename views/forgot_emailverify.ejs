@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification for Password Change</title>
+    <link rel="stylesheet" href="/css/forgot_emailverify.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="image-side">
+            <img src="/images/forgot_emailverify.jpg" alt="Background Photo" class="image">
+        </div>
+        <div class="form-side">
+            <div class="form-container">
+                <h1>Forgot Your Password</h1>
+                <p>Please enter the email address you'd like your password reset information sent to.</p>
+                <form id="password-reset-form" action="/emailverify" method="post">
+                    <label for="email">Enter Email Address:</label>
+                    <input type="email" id="email" name="email" required>
+                    <button type="submit">Send Verification Code</button>
+                </form>
+                <div id="response-message" class="response-message"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

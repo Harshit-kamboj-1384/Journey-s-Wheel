@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification for Password Change</title>
+    <link rel="stylesheet" href="/css/forgot_otpverify.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="image-side">
+            <img src="/images/forgot_emailverify.jpg" alt="Background Photo" class="image">
+        </div>
+        <div class="form-side">
+            <div class="form-container">
+                <h1>Confirm Your Account</h1>
+                <p>We sent a code to your email address.Enter that code to confirm your account.</p>
+                <form id="password-reset-form" action="/otpverify" method="post">
+                    <label for="otp">Enter Code:</label>
+                    <input type="text" id="otp" name="otp" required>
+                    <button type="submit">continue</button>
+                </form>
+                <div id="response-message" class="response-message"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

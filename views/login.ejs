@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="carimg">
+        <img src="/images/black_car2.jpg" alt="" class="car">
+        <h1 class="login-logo">Journeys Wheel</h1>
+    </div>
+    <div class="login_box">
+        <h1>Login</h1>
+        <form action="/login" method="post" onsubmit="return checkAdmin();">
+            <div class="user-admin"> 
+                Login As:
+                <input type="radio" id="admin" name="role" value="Admin" required>Admin
+                <input type="radio" id="user" name="role" value="User" required>User<br><br>
+            </div>
+            
+            <div id="secret-key" class="secret-key" style="display:none;"> 
+                <label for="key">Secret Key:</label><br>
+                <input type="password" id="key" placeholder="Enter Secret key " class="box" name="key"><br><br><br>
+            </div>
+            <div> 
+                <label for="email" style="color: white;opacity: 0.9;">Email:</label><br>
+                <input type="email" placeholder="Enter Your Email" id="email" class="box" name="email" required><br><br><br>
+            </div>
+            <div>
+                <label for="password" style="color: white;opacity: 0.9;">password:</label><br>
+                <input type="password" class="box" name="passd" required><br>
+                <a href="/emailverify"  class="forgot">Forgotten Your Password ?</a><br><br><br>
+            </div>
+            <button class="btn" type="submit"><b>LOGIN</b></button><br><br>
+
+            <a href="/registration" class="anker_tag">Click here to Register</a>
+        </form>
+    </div>
+</body>
+<script>
+    // Function to handle the display of the secret key field
+    function handleRoleChange() {
+        var adminRadio = document.getElementById('admin');
+        var secretKeyField = document.getElementById('secret-key');
+
+        if (adminRadio.checked) {
+            secretKeyField.style.display = 'block';
+        } else {
+            secretKeyField.style.display = 'none';
+        }
+    }
+
+    // Add event listeners to the radio buttons
+    document.getElementById('admin').addEventListener('change', handleRoleChange);
+    document.getElementById('user').addEventListener('change', handleRoleChange);
+
+    // Function to check if the secret key is correct
+    function checkAdmin() {
+        var adminRadio = document.getElementById('admin');
+        if (adminRadio.checked) {
+            var key = document.getElementById('key').value;
+            if (key !== "1234567890") {
+                alert("Invalid Admin key");
+                return false; 
+            }
+        }
+        return true; 
+    }
+</script>
+</html>

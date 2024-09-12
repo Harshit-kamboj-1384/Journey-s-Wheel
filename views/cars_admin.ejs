@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/cars_user.css">
+    <script src="https://kit.fontawesome.com/0a57e62863.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="bs1">
+        <div class="one">
+            <h1>Journeys <span>Wheel</span></h1>
+        </div>
+        <div class="two">
+            <ul class="list">
+                <li><a href="/homeadmin">Home</a></li>
+                <li><a href="/carsadmin">Cars</a></li>
+                <li><a href="/profile"><i class="fa-solid fa-user user-icon" id="icon"></i> <%= userr.name %></a></li>
+                <li><a href="/logout" id="logoutButton">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
+                <li><a href="/add-car">Add New Car</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="backimage">
+ 
+    </div>
+
+    <div class="first">
+        <h2>Find Your Perfect Car</h2>
+        <div class="car-gallery">
+            <% cars.forEach(car => { %>
+                <div class="car-card">
+                    <img src="/images/<%= car.img %>" class="carimg">
+                    <div class="carcont">
+                        <span class="heading"><b><%= car.name %></b></span><br><br>
+                        <span class="price1"><b>price/-</b><span class="price2"><%= car.price %></span>/Rent per day</span><br><br>
+                        <a href="/updatecar/<%= car.id %>"><button class="btn1">Update</button></a>
+                        <a href="#" class="remove-data" data-car-img="<%= car.img %>" onclick="removeCar(event, '<%= car.img %>')"><button class="btn2">Delete</button></a>                
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+  
+</body>
+<script>
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        // Clear the token from local storage
+        localStorage.removeItem('Token'); // Ensure this matches the key used for storing the token
+        window.location.href = '/login';
+    });
+
+    function removeCar(event, carImg) {
+        event.preventDefault(); // Prevent default anchor behavior
+        
+        // Send a POST request to the server
+        fetch('/removecar', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ carImg: carImg })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response data from the server
+            if (data.success) {
+                alert('Car deleted from car page successfully!');
+                window.location.reload();
+            } else {
+                alert('Failed to delete car from car page.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred.');
+        });
+    }
+</script>
+
+</html>

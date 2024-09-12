@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/registration.css">
+</head>
+<body>
+    <div class="carimg">
+        <img src="/images/black_car2.jpg" alt="" class="car" >
+        <h1 class="signup-logo">Journeys Wheel</h1>
+    </div>
+    <div class="signup_box">
+        <h1>Register</h1>
+        <form action="/registration" method="post">
+            <div>
+                <label for="username" style="color: white;opacity: 0.9;">username:</label><br>
+                <input type="username" class="box" placeholder="Enter the username" name="username" id="nm" required><br><br>
+            </div>
+            <div> 
+                <label for="email" style="color: white;opacity: 0.9;">Email:</label><br>
+                <input type="email" placeholder="Enter the Email" class="box" name="email" id="em" required><br><br>
+            </div>
+            <div>
+                <label for="password" style="color: white;opacity: 0.9;">password:</label><br>
+                <input type="password" class="box" name="passd" id="ps" required><br><br>
+            </div>
+            <div>
+                <label for="captcha" style="color: rgb(239, 239, 239);opacity: 0.9;">Captcha:</label><br>
+                <img src="<%= imgPath %>" alt="Captcha" id="captchaImg"><br>
+                <input type="text" class="box" placeholder="Enter the captcha" name="captcha" id="captcha" required><br><br>
+            </div>
+            <button class="btn" ><b>Register</b></button><br><br>
+
+            <a href="/login" class="anker_tag">Click here to login</a>
+        </form>
+    </div>
+</body>
+</html>
